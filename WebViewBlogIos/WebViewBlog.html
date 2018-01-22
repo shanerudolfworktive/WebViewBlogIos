@@ -1,13 +1,16 @@
 <!DOCTYPE >
-<html xmlns="http://www.w3.org/1999/xhtml" debug="true">
-    <body>
-        <input value="submit" type="button" onclick="AndroidApp.showNativeToast('Hello, this message is from webview');" />
-        <span id="myspan"></span>
-        <script>
-            function updateFromAndroid(message){
-                console.log(message);
-                document.getElementById("myspan").textContent=message;
-            }
-        </script>
-    </body>
+<html>
+    <input value="Get Platform Information" type="button" onclick="getOSVersion()" />
+    <span id="msgId"></span>
+    <script>
+        function getOSVersion(){
+            window.webkit.messageHandlers.iosApp.postMessage('Hello, this message is from WebView');
+        }
+    
+        function renderOSVersion(message){
+            document.getElementById("msgId").textContent=message;
+        }
+    </script>
 </html>
+
+

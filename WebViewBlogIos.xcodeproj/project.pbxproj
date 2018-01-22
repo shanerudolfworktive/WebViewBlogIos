@@ -12,6 +12,7 @@
 		02725D07200E089F001A1C64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02725D05200E089F001A1C64 /* Main.storyboard */; };
 		02725D09200E089F001A1C64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02725D08200E089F001A1C64 /* Assets.xcassets */; };
 		02725D0C200E089F001A1C64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02725D0A200E089F001A1C64 /* LaunchScreen.storyboard */; };
+		02725D14200E09FB001A1C64 /* WebViewBlog.html in Resources */ = {isa = PBXBuildFile; fileRef = 02725D13200E09FB001A1C64 /* WebViewBlog.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		02725D08200E089F001A1C64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02725D0B200E089F001A1C64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02725D0D200E089F001A1C64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02725D13200E09FB001A1C64 /* WebViewBlog.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebViewBlog.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				02725D03200E089F001A1C64 /* ViewController.swift */,
 				02725D05200E089F001A1C64 /* Main.storyboard */,
 				02725D08200E089F001A1C64 /* Assets.xcassets */,
+				02725D13200E09FB001A1C64 /* WebViewBlog.html */,
 				02725D0A200E089F001A1C64 /* LaunchScreen.storyboard */,
 				02725D0D200E089F001A1C64 /* Info.plist */,
 			);
@@ -123,6 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02725D14200E09FB001A1C64 /* WebViewBlog.html in Resources */,
 				02725D0C200E089F001A1C64 /* LaunchScreen.storyboard in Resources */,
 				02725D09200E089F001A1C64 /* Assets.xcassets in Resources */,
 				02725D07200E089F001A1C64 /* Main.storyboard in Resources */,
