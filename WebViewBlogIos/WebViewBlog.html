@@ -1,16 +1,14 @@
 <!DOCTYPE >
 <html>
-    <input value="Get Platform Information" type="button" onclick="getOSVersion()" />
+    <input value="Get Platform Information" type="button" onclick="invokeNative()" />
     <span id="msgId"></span>
     <script>
-        function getOSVersion(){
+        function invokeNative(){
             window.webkit.messageHandlers.iosApp.postMessage('Hello, this message is from WebView');
         }
     
-        function renderOSVersion(message){
-            document.getElementById("msgId").textContent=message;
-        }
+    function render(message){
+        document.getElementById("msgId").textContent=message;
+    }
     </script>
 </html>
-
-
