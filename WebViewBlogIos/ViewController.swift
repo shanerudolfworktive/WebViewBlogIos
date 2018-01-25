@@ -8,33 +8,27 @@
 
 import UIKit
 import WebKit
-import JavaScriptCore
 
-class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate {
-    var webView : WKWebView? = nil
+class ViewController: UIViewController {
+    var webview : BlogWKWebView! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
-        let controller = WKUserContentController()
-        controller.add(self, name: "iosApp")
+        webview = BlogWKWebView(frame: self.view.frame)
+        self.view.addSubview(webview)
         
-        let configuration = WKWebViewConfiguration()
-        configuration.userContentController = controller
-        
-        webView = WKWebView(frame: self.view.frame, configuration: configuration)
-        let url = Bundle.main.url(forResource: "WebViewBlog", withExtension: "html")
-        let request = URLRequest(url: url!)
-        self.view.addSubview(webView!)
-        webView?.load(request)
-        
-        webView?.navigationDelegate = self
+        webview.exposeFunctionToJS(functionName: "identity", function: renderIdentity)
+        webview.exposeFunctionToJS(functionName: "workforce", function: renderJob)
     }
     
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("Message from Javascript: \(message.body)")
-        let platform = UIDevice.current.model;
-        let osVersion = UIDevice.current.systemVersion;
-        webView?.evaluateJavaScript("renderOSVersion('\(platform) : \(osVersion)')", completionHandler: nil)
+    public func renderIdentity(params : [String: Any]?){
+        let name = params?["name"] as! String
+        let age = params?["age"] as! Int
+        webview.invokeJavascript(message: "my name is \(name) and I am \(age) years old")
     }
+    
+    public func renderJob(params : [String: Any]?){
+        let title = params?["title"] as! String
+        webview.invokeJavascript(message: "I work as \(title)")
+    }
+    
 }
-
-

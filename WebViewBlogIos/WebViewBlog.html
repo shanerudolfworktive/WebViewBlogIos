@@ -1,16 +1,19 @@
 <!DOCTYPE >
 <html>
-    <input value="Get Platform Information" type="button" onclick="getOSVersion()" />
-    <span id="msgId"></span>
+    <input value="my identity" type="button" onclick='invokeNative({ "functionName":"identity", "name":"Shane", "age":30 })' />
+    <input value="my job" type="button" onclick='invokeNative({ "functionName":"workforce", "title":"Mobile Dev"})' />
+    <span id="renderId"></span>
     <script>
-        function getOSVersion(){
-            window.webkit.messageHandlers.iosApp.postMessage('Hello, this message is from WebView');
+        function invokeNative(paramJSON){
+            if (window.webkit){
+                window.webkit.messageHandlers.iosApp.postMessage(JSON.stringify(paramJSON));
+            }else {
+                AndroidApp.messageFromJS(JSON.stringify(paramJSON));
+            }
         }
     
-        function renderOSVersion(message){
-            document.getElementById("msgId").textContent=message;
-        }
+    function render(message){
+        document.getElementById("renderId").textContent=message;
+    }
     </script>
 </html>
-
-
