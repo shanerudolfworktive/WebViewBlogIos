@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         webview = BlogWKWebView(frame: self.view.frame)
+        webview.load(URLRequest(url: URL(string: "https://shanerudolfworktive.github.io/WebViewBlogHtml/WebViewBlogPart2")!))
         self.view.addSubview(webview)
         
         webview.exposeFunctionToJS(functionName: "identity", function: renderIdentity)

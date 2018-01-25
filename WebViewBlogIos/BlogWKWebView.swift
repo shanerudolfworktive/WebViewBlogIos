@@ -28,10 +28,6 @@ class BlogWKWebView: WKWebView, WKScriptMessageHandler {
     
     func Initialize () {
         configuration.userContentController.add(self, name: "iosApp")
-        let url = Bundle.main.url(forResource: "WebViewBlog", withExtension: "html")
-//        let request = URLRequest(url: URL(string: "https://shanerudolfworktive.github.io/WebViewBlogHtml/")!)
-        let request = URLRequest(url: url!)
-        load(request)
     }
 
     public func exposeFunctionToJS(functionName: String, function: @escaping ([String: Any]?)->Void){
@@ -39,7 +35,7 @@ class BlogWKWebView: WKWebView, WKScriptMessageHandler {
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        let dict = convertToDictionary(text: String(describing:message.body))
+        let dict = convertJsonToDictionary(text: String(describing:message.body))
         functions[String(describing: dict!["functionName"]!)]?(dict)
     }
     
@@ -47,7 +43,7 @@ class BlogWKWebView: WKWebView, WKScriptMessageHandler {
         evaluateJavaScript("render('\(message)')", completionHandler: nil)
     }
     
-    func convertToDictionary(text: String) -> [String: Any]? {
+    func convertJsonToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             do {
                 return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
