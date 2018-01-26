@@ -14,17 +14,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         webview = BlogWKWebView(frame: self.view.frame)
-        webview.load(URLRequest(url: URL(string: "https://shanerudolfworktive.github.io/WebViewBlogHtml/WebViewBlogPart2")!))
+        let u = "https://shanerudolfworktive.github.io/WebViewBlogHtml/WebViewBlogPart2"
+        let request = URLRequest(url: URL(string: u)!)
+        webview.load(request)
         self.view.addSubview(webview)
         
-        webview.exposeFunctionToJS(functionName: "identity", function: renderIdentity)
         webview.exposeFunctionToJS(functionName: "workforce", function: renderJob)
-    }
-    
-    public func renderIdentity(params : [String: Any]?){
-        let name = params?["name"] as! String
-        let age = params?["age"] as! Int
-        webview.invokeJavascript(message: "my name is \(name) and I am \(age) years old")
+        webview.exposeFunctionToJS(functionName: "identity", function: renderIdentity)
     }
     
     public func renderJob(params : [String: Any]?){
@@ -32,4 +28,9 @@ class ViewController: UIViewController {
         webview.invokeJavascript(message: "I work as \(title)")
     }
     
+    public func renderIdentity(params : [String: Any]?){
+        let name = params?["name"] as! String
+        let age = params?["age"] as! Int
+        webview.invokeJavascript(message: "my name is \(name) and I am \(age) years old")
+    }
 }
